@@ -9,6 +9,9 @@ COPY mvnw .
 COPY .mvn .mvn
 COPY pom.xml .
 
+# Make mvnw executable
+RUN chmod +x ./mvnw
+
 # Build the dependencies (to cache them)
 RUN ./mvnw dependency:go-offline
 
@@ -17,9 +20,6 @@ COPY src src
 
 # Package the application
 RUN ./mvnw clean package -DskipTests
-
-# Copy the .env file (optional, for local testing; avoid in production)
-# COPY .env .env
 
 # Run the jar file
 CMD ["java", "-jar", "target/AdaniDB.jar"]
