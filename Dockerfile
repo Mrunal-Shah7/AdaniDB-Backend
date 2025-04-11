@@ -21,5 +21,5 @@ COPY src src
 # Package the application
 RUN ./mvnw clean package -DskipTests
 
-# Run the jar file
-CMD ["java", "-jar", "target/AdaniDB.jar"]
+# Run the jar file (use the exact name)
+CMD ["java", "-jar", "target/AdaniDB-0.0.1-SNAPSHOT.jar"]
